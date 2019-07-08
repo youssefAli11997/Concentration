@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThemeChooserViewController: UIViewController {
+class ThemeChooserViewController: UIViewController, UISplitViewControllerDelegate {
     
     private var splitViewDetailConcentrationViewController: ConcentrationViewController? {
         return splitViewController?.viewControllers.last as? ConcentrationViewController
@@ -47,6 +47,20 @@ class ThemeChooserViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        splitViewController?.delegate = self
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        if let cvc = secondaryViewController as? ConcentrationViewController {
+            if cvc.theme == nil {
+                return true
+            }
+        }
+        return false
     }
 
 }
