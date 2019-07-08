@@ -16,7 +16,7 @@ class ConcentrationViewController: UIViewController {
         didSet {
             emojiChoices = theme ?? defaultTheme
             emoji = [:]
-            //updateViewFromModel()
+            updateViewFromModel()
         }
     }
     
