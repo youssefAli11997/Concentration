@@ -8,12 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConcentrationViewController: UIViewController {
+    
+    var emoji: [Card:String] = [:]
+    
+    var theme: String? {
+        didSet {
+            emojiChoices = theme ?? ""
+            emoji = [:]
+            updateViewFromModel()
+        }
+    }
 
     private var numberOfPairs: Int = 0
     private var game = Concentration(numberOfPairs: 1)
-    
-    var emoji: [Card:String] = [:]
     
     private(set) var flipCount: Int = 0 {
         didSet {
@@ -86,7 +94,7 @@ class ViewController: UIViewController {
         for button in cardButtons {
             button.isEnabled = true
             button.setTitle("", for: UIControl.State.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            button.backgroundColor = #colorLiteral(red: 0.1454179883, green: 0.5250169039, blue: 0.6256836057, alpha: 1)
         }
     }
     
@@ -101,7 +109,7 @@ class ViewController: UIViewController {
     func updateFlipCountLabel() {
         let attributes: [NSAttributedString.Key: Any] = [
             .strokeWidth : 5.0,
-            .strokeColor : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            .strokeColor : #colorLiteral(red: 0.1454179883, green: 0.5250169039, blue: 0.6256836057, alpha: 1)
         ]
         
         let attributedString = NSAttributedString(string: "Flips: \(flipCount)",attributes: attributes)
@@ -132,7 +140,7 @@ class ViewController: UIViewController {
                 }
                 else {
                     button.setTitle("", for: UIControl.State.normal)
-                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+                    button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 0.1454179883, green: 0.5250169039, blue: 0.6256836057, alpha: 1)
                 }
             
             if card.isMatched {
