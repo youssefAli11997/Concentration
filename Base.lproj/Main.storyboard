@@ -17,13 +17,61 @@
                     <view key="view" contentMode="scaleToFill" id="HjG-RR-9Ma">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYi-Rz-j4N">
+                                <rect key="frame" x="42" y="103" width="291" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-VE-PdT">
+                                <rect key="frame" x="111" y="258" width="153" height="306"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIi-ec-wdR">
+                                        <rect key="frame" x="20" y="0.0" width="113" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Sports"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="tZw-94-Ev8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIP-FH-BG0">
+                                        <rect key="frame" x="26" y="123" width="101" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Faces"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="JAA-oK-oE9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OZ-ng-Pwx">
+                                        <rect key="frame" x="8" y="246" width="137" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Animals"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Choose Theme" id="LgK-dM-62m"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yt5-VE-PdT" secondAttribute="height" multiplier="1:2" id="OeI-wa-ptb"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yt5-VE-PdT" firstAttribute="centerX" secondItem="rsd-iQ-gSg" secondAttribute="centerX" id="CBs-YT-AZB"/>
+                            <constraint firstItem="TYi-Rz-j4N" firstAttribute="top" secondItem="rsd-iQ-gSg" secondAttribute="top" constant="59" id="PsS-1W-z0W"/>
+                            <constraint firstItem="yt5-VE-PdT" firstAttribute="leading" secondItem="rsd-iQ-gSg" secondAttribute="leading" constant="111" id="UkM-Jc-M18"/>
+                            <constraint firstItem="yt5-VE-PdT" firstAttribute="centerY" secondItem="rsd-iQ-gSg" secondAttribute="centerY" id="Z3M-Zb-urc"/>
+                            <constraint firstItem="TYi-Rz-j4N" firstAttribute="leading" secondItem="rsd-iQ-gSg" secondAttribute="leading" constant="42" id="fbb-nn-Nh1"/>
+                            <constraint firstItem="TYi-Rz-j4N" firstAttribute="centerX" secondItem="rsd-iQ-gSg" secondAttribute="centerX" id="oVi-JT-pEk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rsd-iQ-gSg"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCk-9i-jtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1262" y="24"/>
+            <point key="canvasLocation" x="-1263.2" y="23.645320197044335"/>
         </scene>
         <!--Concentration View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -221,4 +269,7 @@
             <point key="canvasLocation" x="-409" y="24"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="LgK-dM-62m"/>
+    </inferredMetricsTieBreakers>
 </document>
