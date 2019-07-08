@@ -14,11 +14,13 @@ class ConcentrationViewController: UIViewController {
     
     var theme: String? {
         didSet {
-            emojiChoices = theme ?? ""
+            emojiChoices = theme ?? defaultTheme
             emoji = [:]
-            updateViewFromModel()
+            //updateViewFromModel()
         }
     }
+    
+    private var defaultTheme = "🎓💼🎩🌼☁️🌍🚗⛪️🖨💊🧲📎🔔"
 
     private var numberOfPairs: Int = 0
     private var game = Concentration(numberOfPairs: 1)
@@ -103,7 +105,7 @@ class ConcentrationViewController: UIViewController {
         game = Concentration(numberOfPairs: numberOfPairs)
         emoji = [Card:String]()
         flipCount = 0
-        emojiChoices = "😎😍👻🍔🐵🍗🚗⚽️🧩🔑"
+        emojiChoices = theme ?? defaultTheme
     }
     
     func updateFlipCountLabel() {
@@ -129,6 +131,9 @@ class ConcentrationViewController: UIViewController {
     }
     
     func updateViewFromModel() {
+        if cardButtons == nil {
+            return
+        }
         var numberOfMatchedCards = 0
         for index in cardButtons.indices {
             let button = cardButtons[index]
