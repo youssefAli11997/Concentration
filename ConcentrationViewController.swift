@@ -55,14 +55,24 @@ class ConcentrationViewController: UIViewController {
     @IBAction private func touchCard(_ sender: UIButton) {
         if let cardIndex = visibleCardButtons.index(of: sender) {
             flipCount += 1
-            if let matchingVisiblePairIndices = game.chooseCard(at: cardIndex) {
-                let matchingRealPairIndices = findRealIndices(from: matchingVisiblePairIndices)
+            //var matchingHappend = false
+            if game.chooseCard(at: cardIndex) != nil {
+                /*let matchingRealPairIndices = findRealIndices(from: matchingVisiblePairIndices)
+                print(matchingVisiblePairIndices)
                 print(matchingRealPairIndices)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-                    self.hideCardAndDisableButtons(at: [cardIndex])
-                })
+                    print("here!!")
+                    self.updateViewFromModel()
+                    print("here!!!!!!!!!")
+                })*/
+                //matchingHappend = true
+                /*DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000), execute: {
+                    self.hideCardAndDisableButtons(at: matchingVisiblePairIndices)
+                })*/
             }
-            updateViewFromModel()
+            //if !matchingHappend {
+                updateViewFromModel()
+            //}
         }
     }
     
@@ -143,7 +153,7 @@ class ConcentrationViewController: UIViewController {
     
     func hideCardAndDisableButtons(at indices: [Int]) {
         for index in indices {
-            hideCardAndDisableButton(visibleCardButtons[index])
+            hideCardAndDisableButton(cardButtons[index])
         }
     }
     
@@ -157,15 +167,21 @@ class ConcentrationViewController: UIViewController {
         if visibleCardButtons == nil {
             return
         }
-        
+        print("here!!!!!")
         var numberOfMatchedCards = 0
         for index in visibleCardButtons.indices {
             let button = visibleCardButtons[index]
             let card = game.cards[index]
             
             if card.isFaceUp {
-                button.setTitle(self.emoji(for: card), for: UIControl.State.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                if card.isMatched {
+                    button.setTitle("", for: UIControl.State.normal)
+                    button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+                }
+                else {
+                    button.setTitle(self.emoji(for: card), for: UIControl.State.normal)
+                    button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                }
             }
             else {
                 button.setTitle("", for: UIControl.State.normal)
@@ -178,7 +194,7 @@ class ConcentrationViewController: UIViewController {
         }
         
         if isGameEnded(numberOfMatchedCards){
-            offerNewGame()
+            //offerNewGame()
         }
         
     }
